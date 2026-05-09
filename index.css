@@ -1,0 +1,214 @@
+@import "tailwindcss";
+
+@theme {
+  --color-navy-900: #060a14;
+  --color-navy-800: #0a0f1a;
+  --color-navy-700: #0f172a;
+  --color-navy-600: #131c31;
+  --color-cyan-glow: #00d4ff;
+  --color-teal-neon: #14b8a6;
+  --color-teal-light: #2dd4bf;
+  --color-emerald-glow: #00ff88;
+  --font-heading: 'Orbitron', sans-serif;
+  --font-body: 'Poppins', sans-serif;
+  --animate-blob1: blob1 20s ease-in-out infinite;
+  --animate-blob2: blob2 25s ease-in-out infinite;
+  --animate-blob3: blob3 22s ease-in-out infinite;
+  --animate-aurora: aurora 15s ease-in-out infinite;
+  --animate-float-particle: float-particle 15s linear infinite;
+  --animate-glow-pulse: glow-pulse 3s ease-in-out infinite;
+  --animate-float: float 6s ease-in-out infinite;
+  --animate-shimmer: shimmer 3s linear infinite;
+  --animate-fade-in: fadeInUp 0.8s ease-out forwards;
+  --animate-slide-up: slideUp 0.6s ease-out forwards;
+  --animate-scale-in: scaleIn 0.5s ease-out forwards;
+  --animate-pulse-slow: pulse 4s ease-in-out infinite;
+}
+
+@keyframes blob1 {
+  0%, 100% { transform: translate(0, 0) scale(1); }
+  25% { transform: translate(30px, -50px) scale(1.1); }
+  50% { transform: translate(-20px, 20px) scale(0.9); }
+  75% { transform: translate(20px, 40px) scale(1.05); }
+}
+@keyframes blob2 {
+  0%, 100% { transform: translate(0, 0) scale(1); }
+  33% { transform: translate(-30px, 30px) scale(1.1); }
+  66% { transform: translate(40px, -20px) scale(0.95); }
+}
+@keyframes blob3 {
+  0%, 100% { transform: translate(0, 0) scale(1); }
+  50% { transform: translate(50px, 30px) scale(1.1); }
+}
+@keyframes aurora {
+  0%, 100% { transform: translateX(-10%) rotate(0deg); opacity: 0.3; }
+  33% { transform: translateX(10%) rotate(3deg); opacity: 0.5; }
+  66% { transform: translateX(-5%) rotate(-2deg); opacity: 0.35; }
+}
+@keyframes float-particle {
+  0% { transform: translateY(0) translateX(0); opacity: 0; }
+  10% { opacity: 0.8; }
+  90% { opacity: 0.6; }
+  100% { transform: translateY(-100vh) translateX(30px); opacity: 0; }
+}
+@keyframes glow-pulse {
+  0%, 100% { box-shadow: 0 0 20px rgba(0, 212, 255, 0.2); }
+  50% { box-shadow: 0 0 40px rgba(0, 212, 255, 0.4), 0 0 60px rgba(20, 184, 166, 0.2); }
+}
+@keyframes float {
+  0%, 100% { transform: translateY(0px); }
+  50% { transform: translateY(-10px); }
+}
+@keyframes shimmer {
+  0% { background-position: -200% center; }
+  100% { background-position: 200% center; }
+}
+@keyframes fadeInUp {
+  from { opacity: 0; transform: translateY(30px); }
+  to { opacity: 1; transform: translateY(0); }
+}
+@keyframes slideUp {
+  from { opacity: 0; transform: translateY(50px); }
+  to { opacity: 1; transform: translateY(0); }
+}
+@keyframes scaleIn {
+  from { opacity: 0; transform: scale(0.9); }
+  to { opacity: 1; transform: scale(1); }
+}
+@keyframes borderGlow {
+  0%, 100% { border-color: rgba(0, 212, 255, 0.15); }
+  50% { border-color: rgba(0, 212, 255, 0.4); }
+}
+@keyframes heroTextGlow {
+  0%, 100% { text-shadow: 0 0 20px rgba(0, 212, 255, 0.3); }
+  50% { text-shadow: 0 0 40px rgba(0, 212, 255, 0.6), 0 0 80px rgba(20, 184, 166, 0.3); }
+}
+@keyframes spinSlow {
+  from { transform: rotate(0deg); }
+  to { transform: rotate(360deg); }
+}
+
+html {
+  scroll-behavior: smooth;
+  -webkit-tap-highlight-color: transparent;
+}
+
+body {
+  font-family: 'Poppins', sans-serif;
+  background: #060a14;
+  color: #e2e8f0;
+  overflow-x: hidden;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+::-webkit-scrollbar { width: 6px; }
+::-webkit-scrollbar-track { background: #0a0f1a; }
+::-webkit-scrollbar-thumb { background: linear-gradient(180deg, #14b8a6, #00d4ff); border-radius: 3px; }
+
+.reveal {
+  opacity: 0;
+  transform: translateY(30px);
+  transition: all 0.8s cubic-bezier(0.4, 0, 0.2, 1);
+}
+.revealed {
+  opacity: 1;
+  transform: translateY(0);
+}
+.reveal-delay-1 { transition-delay: 0.1s; }
+.reveal-delay-2 { transition-delay: 0.2s; }
+.reveal-delay-3 { transition-delay: 0.3s; }
+.reveal-delay-4 { transition-delay: 0.4s; }
+.reveal-delay-5 { transition-delay: 0.5s; }
+
+.glass {
+  background: rgba(10, 20, 40, 0.5);
+  backdrop-filter: blur(16px);
+  -webkit-backdrop-filter: blur(16px);
+  border: 1px solid rgba(0, 212, 255, 0.1);
+}
+.glass-card {
+  background: rgba(10, 20, 40, 0.5);
+  backdrop-filter: blur(16px);
+  -webkit-backdrop-filter: blur(16px);
+  border: 1px solid rgba(0, 212, 255, 0.1);
+  border-radius: 16px;
+  transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+}
+.glass-card:hover {
+  border-color: rgba(0, 212, 255, 0.3);
+  box-shadow: 0 0 30px rgba(0, 212, 255, 0.1), inset 0 0 30px rgba(0, 212, 255, 0.03);
+  transform: translateY(-4px);
+}
+
+.glow-btn {
+  position: relative;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 8px;
+  padding: 14px 28px;
+  border-radius: 12px;
+  font-weight: 600;
+  font-size: 0.95rem;
+  transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+  cursor: pointer;
+  text-decoration: none;
+  white-space: nowrap;
+}
+.glow-btn-primary {
+  background: linear-gradient(135deg, #14b8a6, #00d4ff);
+  color: #060a14;
+  box-shadow: 0 0 20px rgba(0, 212, 255, 0.25);
+}
+.glow-btn-primary:hover {
+  box-shadow: 0 0 40px rgba(0, 212, 255, 0.5), 0 0 60px rgba(20, 184, 166, 0.25);
+  transform: translateY(-2px);
+}
+.glow-btn-secondary {
+  background: transparent;
+  border: 1px solid rgba(0, 212, 255, 0.35);
+  color: #00d4ff;
+  box-shadow: 0 0 10px rgba(0, 212, 255, 0.08);
+}
+.glow-btn-secondary:hover {
+  background: rgba(0, 212, 255, 0.08);
+  border-color: rgba(0, 212, 255, 0.6);
+  box-shadow: 0 0 25px rgba(0, 212, 255, 0.2);
+  transform: translateY(-2px);
+}
+
+.shimmer-text {
+  background: linear-gradient(90deg, #14b8a6, #00d4ff, #2dd4bf, #00ff88, #00d4ff);
+  background-size: 200% auto;
+  -webkit-background-clip: text;
+  background-clip: text;
+  -webkit-text-fill-color: transparent;
+  animation: shimmer 3s linear infinite;
+}
+
+.section-heading {
+  font-family: 'Orbitron', sans-serif;
+  background: linear-gradient(135deg, #14b8a6, #00d4ff);
+  -webkit-background-clip: text;
+  background-clip: text;
+  -webkit-text-fill-color: transparent;
+}
+
+.icon-glow {
+  filter: drop-shadow(0 0 8px rgba(0, 212, 255, 0.4));
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .reveal { transition: opacity 0.3s ease; transform: none; }
+  .revealed { transform: none; }
+  *, *::before, *::after {
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.01ms !important;
+  }
+}
+
+@media (max-width: 768px) {
+  .glow-btn { padding: 12px 20px; font-size: 0.9rem; }
+}
